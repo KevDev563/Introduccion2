@@ -39,9 +39,9 @@ import rodriguez.kevin.introduccion2.ui.theme.Introduccion2Theme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FichaEstudiante() {
-    var nombre by remember { mutableStateOf("Junior Kevin Rodríguez Gomez") }
-    var carrera by remember { mutableStateOf("Ingenieria en Electronica y Computacion") }
-    var semestre by remember { mutableStateOf("8vo semestre") }
+    var nombre by remember { mutableStateOf("") }
+    var carrera by remember { mutableStateOf("") }
+    var semestre by remember { mutableStateOf("") }
     var meGusta by remember { mutableStateOf(0) }
 
     Scaffold(
@@ -55,55 +55,13 @@ fun FichaEstudiante() {
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
         ) {
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(16.dp)
-            ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .padding(bottom = 16.dp)
-                            .size(130.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.primaryContainer),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        val inicial = nombre.firstOrNull()?.toString() ?: "?"
-                        Text(
-                            text = inicial.uppercase(),
-                            style = MaterialTheme.typography.displayLarge, // se encarga del tamaño de la letra
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
-                            //fontSize = 32.sp // Puedes ajustar este número al tamaño
-                        )
-                    }
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Text(
-                            text = nombre.ifEmpty { "Sin nombre" },
-                            fontSize = 25.sp,
-                            textAlign = TextAlign.Center
-                        )
-                        Text(
-                            text = carrera.ifEmpty { "Sin carrera" },
-                            fontSize = 20.sp,
-                            textAlign = TextAlign.Center
-                        )
-                        Text(
-                            text = semestre.ifEmpty { "Sin semestre" },
-                            fontSize = 18.sp,
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                }
-            }
+            // Llamamos a nuestro composable SIN ESTADO y le pasamos los datos
+            PantallaPerfil(
+                nombre = nombre,
+                carrera = carrera,
+                semestre = semestre
+            )
+
             OutlinedTextField(
                 value = nombre,
                 onValueChange = { nombre = it },

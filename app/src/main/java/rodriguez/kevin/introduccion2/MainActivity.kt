@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import rodriguez.kevin.introduccion2.composables.ContadorCafes
 import rodriguez.kevin.introduccion2.composables.FichaEstudiante
+import rodriguez.kevin.introduccion2.composables.FichaPersona
 import rodriguez.kevin.introduccion2.ui.theme.Introduccion2Theme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Introduccion2Theme {
-                FichaEstudiante()
+                FichaPersona()
             }
         }
     }
@@ -57,34 +58,10 @@ fun Miboton(){
     }
 }
 
-@Composable
-fun PantallaPerfil(){
-    Column(modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Box(modifier = Modifier.weight(1f).fillMaxWidth(),
-            contentAlignment = Alignment.Center){
-
-            Image(painter = painterResource(id = R.drawable.mario),
-                contentDescription = "Imagen de perfil",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.size(250.dp).clip(CircleShape))
-
-
-        }
-
-        Box(
-            modifier = Modifier.weight(1f).fillMaxWidth(),
-            contentAlignment = Alignment.Center){
-
-        }
-
-    }
-}
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Introduccion2Theme {
+    Introduccion2Theme{
         FichaEstudiante()
     }
 }

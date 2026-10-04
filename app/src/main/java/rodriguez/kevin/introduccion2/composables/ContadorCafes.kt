@@ -12,6 +12,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import rodriguez.kevin.introduccion2.ui.theme.Introduccion2Theme
 
 @Composable
 fun ContadorCafes(){
@@ -24,6 +26,14 @@ fun ContadorCafes(){
         Button(onClick = {contador++}) {
             Text(text = "Agregar otro cafe ")
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    Introduccion2Theme{
+        ContadorCafes()
     }
 }
 
